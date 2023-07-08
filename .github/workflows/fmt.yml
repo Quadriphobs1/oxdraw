@@ -1,0 +1,19 @@
+name: cargo fmt
+
+on: [push]
+
+jobs:
+  format:
+    name: cargo fmt
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+          profile: minimal
+          components: rustfmt
+
+      - run: cargo fmt --all -- --check

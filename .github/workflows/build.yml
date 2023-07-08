@@ -1,0 +1,50 @@
+name: cargo build
+
+on: [push]
+
+jobs:
+  build_ubuntu:
+    name: build ubuntu
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: install libgtk-dev
+        run: |
+          sudo apt update
+          sudo apt install libgtk-3-dev
+      - uses: actions/checkout@v3
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+          profile: minimal
+
+      - run: cargo build
+
+  build_macos:
+    name: build macos
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+          profile: minimal
+
+      - run: cargo build
+
+  build_windows:
+    name: build windows
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+          profile: minimal
+
+      - run: cargo build

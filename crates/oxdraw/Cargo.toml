@@ -1,0 +1,39 @@
+[package]
+name = "oxdraw"
+description = "A virtual space for sketching hand drawing and whiteboards in rust."
+authors = ["Quadri Adekunle <https://github.com/Quadriphobs1>"]
+edition = "2021"
+homepage = "https://github.com/Quadriphobs1/oxdraw"
+license = "GPL-3.0"
+repository = "https://github.com/Quadriphobs1/oxdraw"
+version = "0.0.1"
+readme = "README.md"
+publish = false
+
+[package.metadata.bundle]
+name = "Oxdraw"
+identifier = "com.quadri.oxdraw"
+version = "0.0.1"
+icon = [
+  "../../asets/icon.png",
+  "../../asets/icon@2x.png",
+  "../../asets/icon@3x.png",
+]
+resources = ["../../assets", "../../assets/*.png"]
+copyright = "Copyright (c) Quadri Adekunle 2023. All rights reserved."
+short_description = "Virtual skteching."
+long_description = """
+A virtual space for sketching hand drawing and whiteboards in rust.
+"""
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+# Local deps
+app = { path = "../app", version = "0.0.1", default-features = false }
+window = { path = "../window", version = "0.0.1", default-features = false }
+
+# External deps
+anyhow = "1.0.71"
+env_logger = "0.10.0"
+log = { version = "0.4.19", default-features = false }

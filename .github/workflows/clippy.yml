@@ -1,0 +1,51 @@
+on: [push]
+name: cargo cranky/clippy
+jobs:
+  cranky_check_ubuntu:
+    name: cranky check ubuntu
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: install libgtk-dev
+        run: |
+          sudo apt update
+          sudo apt install libgtk-3-dev
+      - uses: actions/checkout@v3
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+          profile: minimal
+          components: clippy
+      - run: cargo install cargo-cranky
+      - run: cargo cranky --all-targets --all-features -- --deny warnings
+
+  cranky_check_macos:
+    name: cranky check macos
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+          profile: minimal
+          components: clippy
+      - run: cargo install cargo-cranky
+      - run: cargo cranky --all-targets --all-features -- --deny warnings
+
+  cranky_check_windows:
+    name: cranky check windows
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+          profile: minimal
+          components: clippy
+      - run: cargo install cargo-cranky
+      - run: cargo cranky --all-targets --all-features -- --deny warnings

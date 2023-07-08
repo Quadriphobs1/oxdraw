@@ -1,0 +1,21 @@
+[package]
+name = "app"
+authors = ["Quadri Adekunle <https://github.com/Quadriphobs1>"]
+edition = "2021"
+homepage = "https://github.com/Quadriphobs1/oxdraw"
+license = "GPL-3.0"
+repository = "https://github.com/Quadriphobs1/oxdraw"
+version = "0.0.1"
+readme = "README.md"
+publish = false
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+# Local deps
+window = { path = "../window", version = "0.0.1", default-features = false }
+
+# External deps
+anyhow = "1.0.71"
+log = { version = "0.4.19", default-features = false }
+thiserror = "1.0.40"
